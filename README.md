@@ -45,7 +45,7 @@ The following links are provided as a demo, so please deploy to a node.js-enable
   * 受信、コメントページ：https://commentable-demo.herokuapp.com/
 
   Open the following links in Chrome or Firefox, respectively, and press the start button on the delivery page to display the delivery image on the receive and comment pages. Your comment will be visible to other users who are on the same receiving and commenting pages at the same time. However, if you want to distribute to more than 20 users, please use it in combination with other distribution applications (such as Zoom and Microsoft Teams) as shown below. Therefore, there is a limit to the PC load on the transmission side. In addition, because of P2P communication, video and audio may not be received depending on the network environment.
-  
+
   * Broadcasting page：https://commentable-demo.herokuapp.com/broadcast.html
   * viewe and comment page：https://commentable-demo.herokuapp.com/
 
