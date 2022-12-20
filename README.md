@@ -1,6 +1,6 @@
 ![](docs/img/commentable_logo_text.png)
 
-| ![](./commentable_sample.gif) | 
+| ![](docs/img/commentable_sample.gif) |
 |:--:|
 |mmhmmのVritual カメラにコメントを載せたところ|
 
