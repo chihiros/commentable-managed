@@ -28,11 +28,26 @@ The [commentscreen](https://commentscreen.com/ ) was great and inspired me a lot
 
 I developed this software for an online class in 2020 in order to fulfill a personal wish that cannot be easily achieved with commentscreen. I will make a prototype of this software in a course called "Basic Prototyping and Interaction Design Practice I" at Tokyo Metropolitan University, and will finally release it here at the end of the first semester.
 
-
-
 # 動作環境
   * macOS, Windows, Linux上にて、ChromeまたはFirefoxにて動作。SafariやIEは非推奨
   * Works on macOS, Windows, and Linux with Chrome or Firefox, Safari and IE are not recommended.
+
+# Usage
+## 依存しているPackageのインストール
+```sh
+$ make instsall
+```
+
+## 開発用Webサーバの起動
+```sh
+$ make up-web
+```
+
+## 開発用クライアントアプリの起動
+```sh
+$ make up-electron
+```
+
 
 # Demo
 以下はデモとして公開しているリンクですので、実際に利用する場合にはnode.jsが利用可能なサーバにデプロイしてご利用ください。以下ではherokuにデプロイしています。
@@ -104,7 +119,7 @@ If you would like to support this project, please contact me if you are interest
 # Requirement
   - node.js: https://nodejs.org/en/
   - p5.js( revised by Tetsuaki Baba ): https://p5js.org
-  - p5.sound.js: 
+  - p5.sound.js:
   - WebRTC: https://developer.mozilla.org/ja/docs/Web/API/WebRTC_API
   - speechSynthesis: https://developer.mozilla.org/ja/docs/Web/API/Window/speechSynthesis
 
