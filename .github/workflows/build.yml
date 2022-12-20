@@ -26,6 +26,14 @@ jobs:
       - name: Change directory
         run: cd ${{ matrix.package_root }}
 
+      # ls -lah
+      - name: List directory
+        run: ls -lah
+
+      # pwd
+      - name: Print working directory
+        run: pwd
+
       - name: Build/release Electron app
         uses: samuelmeuli/action-electron-builder@v1
         with:
