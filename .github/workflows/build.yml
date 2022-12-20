@@ -22,14 +22,6 @@ jobs:
         with:
           node-version: 18
 
-      # ls -lah
-      - name: List directory
-        run: ls
-
-      # pwd
-      - name: Print working directory
-        run: pwd
-
       - name: Build/release Electron app
         uses: samuelmeuli/action-electron-builder@v1
         with:
