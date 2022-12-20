@@ -23,7 +23,7 @@
     "publish":{
       "provider": "github",
       "owner": "chihiros",
-      "repo": "commentable-managed/client"
+      "repo": "commentable-managed"
     },
     "mac": {
       "target": {
