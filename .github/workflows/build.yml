@@ -28,7 +28,7 @@ jobs:
 
       # ls -lah
       - name: List directory
-        run: ls -lah
+        run: ls
 
       # pwd
       - name: Print working directory
