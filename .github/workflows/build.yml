@@ -22,13 +22,9 @@ jobs:
         with:
           node-version: 18
 
-      # # cd client
-      # - name: Change directory
-      #   run: cd ${{ matrix.package_root }}
-
       # ls -lah
       - name: List directory
-        run: ls -lah
+        run: ls
 
       # pwd
       - name: Print working directory
