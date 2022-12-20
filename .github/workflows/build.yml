@@ -11,7 +11,7 @@ jobs:
     strategy:
       matrix:
         os: [macos-latest, windows-latest]
-        package_root: ["client"]
+        package_root: [client]
 
     steps:
       - name: Check out Git repository
