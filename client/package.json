@@ -20,6 +20,11 @@
   "build": {
     "productName": "Commentable-Viewer",
     "copyright": "Copyright © 2021 Tetsuaki Baba",
+    "publish":{
+      "provider": "github",
+      "owner": "chihiros",
+      "repo": "commentable-managed/client"
+    },
     "mac": {
       "target": {
         "target": "dmg",
