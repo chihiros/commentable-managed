@@ -22,11 +22,13 @@ jobs:
         with:
           node-version: 18
 
+      # cd client
+      - name: Change directory
+        run: cd ${{ matrix.package_root }}
+
       - name: Build/release Electron app
         uses: samuelmeuli/action-electron-builder@v1
         with:
           github_token: ${{ secrets.github_token }}
-
-          package_root: ${{ matrix.package_root }}
 
           release: ${{ startsWith(github.ref, 'refs/tags/v') }}
