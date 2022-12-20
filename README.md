@@ -1,8 +1,7 @@
 ![](docs/img/commentable_logo_text.png)
 
-| ![](docs/img/commentable_sample.gif) |
-|:--:|
-|mmhmmのVritual カメラにコメントを載せたところ|
+![](https://qiita-user-contents.imgix.net/https%3A%2F%2Fuser-images.githubusercontent.com%2F64934951%2F208245785-31726053-ca89-4d9e-90d4-e183ee34257e.gif?ixlib=rb-4.0.0&auto=format&gif-q=60&q=75&w=1400&fit=max&s=c2b4ece2b66186387e045e43323beafd)
+
 
 # Getting Started
 とにかくCommentableを利用するだけ，という方は以下のページを参照してください．
