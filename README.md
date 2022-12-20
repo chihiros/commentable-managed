@@ -1,4 +1,4 @@
-![](./icons/commentable_logo_text.png)
+![](docs/img/commentable_logo_text.png)
 
 | ![](./commentable_sample.gif) | 
 |:--:|
