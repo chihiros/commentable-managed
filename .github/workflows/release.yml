@@ -1,0 +1,87 @@
+name: Web, App Release
+on:
+  push:
+    branches:
+      - main
+
+env:
+  FLY_API_TOKEN: ${{ secrets.FLY_API_TOKEN }}
+
+jobs:
+  deploy:
+    name: Deploy Production
+    runs-on: ubuntu-latest
+    environment: PROD
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+        with:
+          fetch-depth: 0
+
+      - name: Detected changed directories
+        id: changed
+        run: |
+          diff="git diff ${{github.event.before}}..${{github.event.after}} --name-only -- "
+          diff+=${extensions}
+          diff+=" | grep -E "./{1}" | sed -e 's/\/.*//' | uniq"
+          directories=$(eval ${diff})
+          dirs=""
+          for dir in ${directories} ; do
+            echo "${dir}"
+            dirs+="${dir} "
+          done
+          echo "::set-output name=directory::${dirs}"
+
+      - name: Run
+        id: run
+        run: |
+          for dir in $(echo "${{ steps.changed.outputs.directory }}") ; do
+            # もし、dirが"web"なら
+            if [ "${dir}" = "web" ]; then
+              echo "::set-output name=isWebDeploy::true"
+            fi
+
+            # もし、dirが"client"なら、client/.github/workflows/electron-builder.ymlを実行する
+            if [ "${dir}" = "client" ]; then
+              echo "::set-output name=isClientRelease::true"
+            fi
+          done
+
+      - name: fly.io init
+        if: ${{ steps.run.outputs.isWebDeploy == 'true' }}
+        uses: superfly/flyctl-actions/setup-flyctl@master
+
+      - name: fly.io deploy
+        if: ${{ steps.run.outputs.isWebDeploy == 'true' }}
+        run: cd web && flyctl --config fly.toml deploy --remote-only
+
+      - name: tag version get
+        id: tag
+        if: ${{ steps.run.outputs.isClientRelease == 'true' }}
+
+        # package.jsonのversionを取得
+        run: |
+          ls -lah
+          version=$(cat client/package.json | jq -r .version)
+          cat client/package.json
+          echo $version
+          echo "::set-output name=version::${version}"
+
+      - name: new tag release
+        if: ${{ steps.run.outputs.isClientRelease == 'true' }}
+
+        # タグを作成
+        run: |
+          git config --local user.email "szrkw2ui2a@gmail.com"
+          git config --local user.name "chihiros"
+
+          version=${{ steps.tag.outputs.version }}
+          # タグが存在するか確認する
+          if git rev-parse "v${version}" >/dev/null 2>&1; then
+            echo "Tag already exists"
+            exit 0
+          fi
+
+          git tag -a v${version} -m "v${version}"
+          git push origin v${version}
