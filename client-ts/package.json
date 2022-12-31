@@ -2,43 +2,24 @@
   "name": "commentable-viewer",
   "version": "2.1.4",
   "description": "コメンタブルの表示をデスクトップ上に投影するアプリケーション．終了する場合はタスクバーから終了を選択してください．",
-  "main": "main.js",
   "scripts": {
-    "start": "electron .",
-    "build-mac": "electron-builder --mac",
-    "build-win": "electron-builder --win",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "build": "run-p build:main build:render",
+    "build:main": "tsc -p tsconfig.json",
+    "build:render": "parcel build src/render/index.html --public-url ./ --dist-dir ./dist/render",
+    "start": "run-s build start:electron",
+    "start:electron": "electron dist/main.js"
   },
+  "keywords": [],
   "author": "",
-  "license": "ISC",
+  "license": "CC0-1.0",
   "devDependencies": {
+    "@parcel/transformer-typescript-tsc": "^2.8.0",
+    "@types/electron-prompt": "^1.4.0",
+    "@types/node": "^18.11.9",
     "electron": "^22.0.0",
-    "electron-builder": "^23.6.0",
-    "node-cmd": "^5.0.0",
-    "npm": "^9.2.0"
-  },
-  "build": {
-    "productName": "Commentable-Viewer",
-    "copyright": "Copyright © 2021 Tetsuaki Baba",
-    "publish":{
-      "provider": "github",
-      "owner": "chihiros",
-      "repo": "commentable-managed"
-    },
-    "mac": {
-      "target": {
-        "target": "dmg",
-        "arch": "universal"
-      },
-      "icon": "./images/icon.icns"
-    },
-    "win": {
-      "target": {
-        "target": "nsis",
-        "arch": "x64"
-      },
-      "icon": "./images/icon.ico"
-    }
+    "npm-run-all": "^4.1.5",
+    "parcel": "^2.8.0",
+    "typescript": "^4.8.4"
   },
   "dependencies": {
     "electron-prompt": "^1.7.0",
